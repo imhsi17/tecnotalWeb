@@ -1,0 +1,21 @@
+.hover-darkblue:hover {
+    color: #071485 !important;
+}
+
+.transition {
+    transition: color 0.3s ease;
+}
+
+.btn-outline-darkblue {
+    color: #071485;
+    border-color: #071485;
+}
+
+.btn-outline-darkblue:hover {
+    color: #ffffff;
+    background-color: #071485;
+}
+
+.text-semidark-green {
+    color: #11af41 !important;
+}
