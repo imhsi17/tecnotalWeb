@@ -1,6 +1,8 @@
-from django.shortcuts import render,  redirect
-from django.core.mail import send_mail
+from django.shortcuts import render
+from django.core.mail import EmailMessage
 from .models import Service, Project
+from django.conf import settings
+from django.contrib import messages
 
 def index(request):
     
@@ -18,26 +20,35 @@ def projects(request):
 def contact(request):
 
     if request.method == 'POST':
-        name = request.POST.get('nombres')
-        mail = request.POST.get('correo')
-        phone = request.POST.get('celular')
+        name = request.POST['nombres']
+        mail = request.POST['correo']
+        phone = request.POST['celular']
+        message = request.POST['mensaje']
         
         # Configuración del correo a enviar
-        asunto = f"Nuevo Contacto desde la Web: {name}"
-        mensaje = f"""
-Has recibido un nuevo mensaje de contacto desde la página web Tecnotal.
+        subject = f"Nuevo Contacto desde la Web: {name}"
+        template = f"""
+                    Has recibido un nuevo mensaje de contacto desde la página web Tecnotal.
 
-Datos del Cliente:
-- Nombres: {name}
-- Correo: {mail}
-- Número Celular: {phone}
-"""
-        remitente = 'no-responder@tecnotal.com.pe' # Correo que envía
-        destinatarios = ['informes@tecnotal.com.pe']     # Correo que recibe (El administrador)
+                    Datos del Cliente:
+                    - Nombres: {name}
+                    - Correo: {mail}
+                    - Número Celular: {phone}
+                    -------------------------------------------------------------------------
+                    {message}
+                    """
+        to = ['calderonhuaynates@gmail.com']     # Correo que recibe (El administrador)
         
-        # Enviar el correo
-        send_mail(asunto, mensaje, remitente, destinatarios, fail_silently=False)
+        email = EmailMessage(
+            subject,
+            template,
+            settings.EMAIL_HOST_USER,
+            to
+        )
         
-        print(f"[{request.method}] Correo de contacto enviado desde {mail}")
+        email.send(fail_silently=False)
+        
+        messages.success(request, 'Se envío el correo. Pronto nos contactaremos contigo.')
+        return render(request, "contact.html")
     
     return render(request, "contact.html")
