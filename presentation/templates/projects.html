@@ -5,7 +5,7 @@
 {% block title %}Tecnotal | Proyectos{% endblock title %}
 
 {% block hero_img %}
-<img src="{% static 'img/index_background.jpg' %}" class="card-img" style="object-fit: cover; height: 90dvh;"
+<img src="{% static 'img/tecnotal_taller.jpeg' %}" class="card-img" style="object-fit: cover; height: 90dvh;"
     alt="background">
 {% endblock hero_img %}
 {% block hero_title %}TECNOTAL S.A.{% endblock hero_title %}
@@ -13,8 +13,11 @@
 
 {% block info %}{% endblock info %}
 
-{% block section_name %}Nuestros Proyectos{% endblock section_name %}
-{% block section_description %}Soluciones especializadas en metal mecánica y montaje industrial.{% endblock section_description %}
+{% block section_name %}<span class="text-uppercase" style="color: #071485;">Nuestros Proyectos</span>
+{% endblock section_name %}
+{% block section_description %}Soluciones especializadas en <span class="fw-bold" style="color: #11af41;">
+    metal, mecánica y montaje industrial.</span>
+{% endblock section_description %}
 
 {% block card %}
 {% for project in projects %}
@@ -29,15 +32,17 @@
             </div>
             <div class="col-md-7 d-flex align-items-center">
                 <div class="card-body p-4">
-                    <span class="badge bg-success mb-2">{{ project.service.name }}</span>
-                    <span class="badge bg-primary mb-2">{{ project.company.name }}</span>
+                    <span class="badge mb-2" style="background-color: #11af41;">{{ project.service.name }}</span>
+                    <span class="badge mb-2" style="background-color: #071485;">{{ project.company.name }}</span>
                     <h3 class="card-title fw-bold">{{ project.title }}</h3>
                     <p class="card-text text-muted">{{ project.description }}</p>
                     <ul class="list-unstyled small text-muted">
-                        <li><i class="bi bi-geo-alt-fill"></i> Peso Total: {{ project.weight }} Kg.</li>
-                        <li><i class="bi bi-geo-alt-fill"></i> Iniciado: {{ project.project_start }}</li>
-                        <li><i class="bi bi-calendar-check"></i> Finalizado: {{ project.finished_project }}</li>
-                        <li><i class="bi bi-geo-alt-fill"></i> Duración: {{ project.duration }}</li>
+                        <li><i class="bi bi-box-seam text-primary me-1"></i> Peso Total: {{ project.weight }} Kg.</li>
+                        <li><i class="bi bi-calendar-event text-primary me-1"></i> Iniciado: {{ project.project_start }}
+                        </li>
+                        <li><i class="bi bi-calendar-check-fill text-primary me-1"></i> Finalizado: {{
+                            project.finished_project }}</li>
+                        <li><i class="bi bi-clock-history text-primary me-1"></i> Duración: {{ project.duration }}</li>
                     </ul>
                 </div>
             </div>
