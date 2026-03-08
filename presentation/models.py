@@ -51,8 +51,8 @@ class Project(models.Model):
     finished_project = models.DateField('Fecha de entrega', auto_now=False, auto_now_add=False)
     active = models.BooleanField('Activo/inactivo', default=True)
     
-    company = models.ForeignKey(Company, default='Empresa', on_delete=models.SET_DEFAULT)
-    service = models.ForeignKey(Service, default='Servicio', on_delete=models.SET_DEFAULT)
+    company = models.ForeignKey(Company, null=True, blank=True, on_delete=models.SET_NULL)
+    service = models.ForeignKey(Service, null=True, blank=True, on_delete=models.SET_NULL)
     
     
     class Meta:
