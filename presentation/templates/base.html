@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>{% block title %}{% endblock title %}</title>
@@ -29,13 +30,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto gap-3 fw-medium">
                     <li class="nav-item">
+                        <a class="nav-link text-dark hover-darkblue transition px-3" href="/#inicio">INICIO</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-dark hover-darkblue transition px-3" href="/#servicios">SERVICIOS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark hover-darkblue transition px-3" href="/proyectos">PROYECTOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark hover-darkblue transition px-3" href="#contacto">CONTÁCTANOS</a>
+                        <a class="nav-link text-dark hover-darkblue transition px-3" href="/contacto">CONTÁCTANOS</a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <a class="btn btn-outline-darkblue ms-lg-3 rounded-pill px-4 fw-bold" href="/admin">ADMIN</a>
@@ -45,7 +49,7 @@
         </div>
     </nav>
 
-    <section class="card border-0" style="max-height: 100%; overflow: hidden;">
+    <section class="card border-0" style="max-height: 100%; overflow: hidden;" id="inicio">
         {% block hero_img %}{% endblock hero_img %}
         <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-center px-4">
             <h1 class="card-title display-1 fw-bolder mb-3 text-semidark-green" style="font-size: 5rem;">
@@ -69,6 +73,7 @@
             <div class="col-md-6">
                 <div class="p-4 border rounded shadow-sm h-100">
                     <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-buildings fs-2 me-3" style="color: #071485;"></i>
                         <h2 class="h3 mb-0">Nuestra Empresa</h2>
                     </div>
                     <p class="text-muted">
@@ -83,7 +88,7 @@
             <div class="col-md-6">
                 <div class="p-4 border rounded shadow-sm h-100">
                     <div class="d-flex align-items-center mb-3">
-                        <i class="bi bi-eye fs-2 me-3 text-primary"></i> <!-- Icono opcional -->
+                        <i class="bi bi-people-fill fs-2 me-3" style="color: #11af41;"></i>
                         <h2 class="h3 mb-0">Nuestro Equipo</h2>
                     </div>
                     <p class="text-muted">
@@ -110,6 +115,67 @@
             {% endblock card %}
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="text-white pt-5 pb-4 mt-5" style="background-color: #071485;">
+        <div class="container text-center text-md-start">
+            <div class="row text-center text-md-start">
+
+                <!-- Columna 1: Presentación -->
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold" style="color: #11af41;">Tecnotal</h5>
+                    <p class="text-white-50">
+                        Especialistas en fabricación de estructuras metálicas y montaje con más de 10 años de
+                        experiencia en minería, petróleo y energía.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold" style="color: #11af41;">Enlaces</h5>
+                    <p><a href="/#servicios" class="text-white-50 text-decoration-none">Servicios</a></p>
+                    <p><a href="/proyectos" class="text-white-50 text-decoration-none">Proyectos</a></p>
+                </div>
+
+                <!-- Columna 3: Contacto -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold" style="color: #11af41;">Contacto</h5>
+                    <p class="text-white-50"><i class="bi bi-geo-alt-fill me-2 fs-5" style="color: #11af41;"></i> Av.
+                        San Luis N° 2669, San Borja - Lima, Perú</p>
+                    <p class="text-white-50"><i class="bi bi-envelope-fill me-2 fs-5" style="color: #11af41;"></i>
+                        informes@tecnotal.com.pe</p>
+                    <p class="text-white-50"><i class="bi bi-telephone-fill me-2 fs-5" style="color: #11af41;"></i> +51
+                        999 999 999</p>
+                </div>
+
+            </div>
+
+            <hr class="mb-4 border-secondary">
+
+            <!-- Fila Inferior: Copyright y Redes Sociales -->
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="mb-0 text-white-50">
+                        &copy; {% now "Y" %} Tecnotal. Todos los derechos reservados.
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4 text-center text-md-end">
+                    <a href="#"
+                        class="btn btn-outline-light btn-floating m-1 rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 40px; height: 40px; border-color: #11af41; color: #11af41;"><i
+                            class="bi bi-facebook fs-5"></i></a>
+                    <a href="#"
+                        class="btn btn-outline-light btn-floating m-1 rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 40px; height: 40px; border-color: #11af41; color: #11af41;"><i
+                            class="bi bi-linkedin fs-5"></i></a>
+                    <a href="#"
+                        class="btn btn-outline-light btn-floating m-1 rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 40px; height: 40px; border-color: #11af41; color: #11af41;"><i
+                            class="bi bi-instagram fs-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
