@@ -45,6 +45,7 @@ class Project(models.Model):
     id = models.UUIDField(primary_key=True, unique=True, blank=False, default=uuid.uuid4, editable=False)
     title = models.CharField('Título', blank=False, null=False)
     description = models.TextField('Descripción', blank=False, null=True)
+    image = models.ImageField('Imagen', upload_to='proyectos/', default='../static/img/home1.jpg')
     weight = models.DecimalField('Peso', max_digits=10, decimal_places=2, blank=False, null=False)
     duration = models.IntegerField('Duración(días)', blank=False, null=False)
     project_start = models.DateField('Fecha de inicio', auto_now=False, auto_now_add=False)
